@@ -26,9 +26,19 @@ namespace Full_GRASP_And_SOLID
             recipe.AddStep(new Step(GetProduct("Café"), 100, GetEquipment("Cafetera"), 120));
             recipe.AddStep(new Step(GetProduct("Leche"), 200, GetEquipment("Hervidor"), 60));
 
+            // Se declara la variable printer del tipo IPrinter, y se le asigna
+            // un objeto de tipo ConsolePrinter que es subtipo de IPrinter.
             IPrinter printer = new ConsolePrinter();
+
+            // Se llama al método PrintRecipe del objeto, ejecutando ConsolePrinter.PrintRecipe
             printer.PrintRecipe(recipe);
+
+            // Se asigna a la misma variable un objeto de tipo FilePrinter, lo cual es
+            // posible porque también implementa el tipo IPrinter.
             printer = new FilePrinter();
+
+            // Se envía el mismo mensaje a printer, pero como el objeto es de otro tipo,
+            // ahora ejecutará FilePrinter.PrintRecipe.
             printer.PrintRecipe(recipe);
         }
 
